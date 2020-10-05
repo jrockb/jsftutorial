@@ -15,7 +15,7 @@ public class App {
 		TaskService tService = TaskService.getInstance();
 		
 		Usuario u = new Usuario();
-		List<Usuario> u2 = new ArrayList<>();
+		List<Usuario> u2;
 		u.setFirstName("Jonny");
 		u.setLastName("Bernal");
 		u.setUserName("jrockb");
@@ -29,7 +29,7 @@ public class App {
 		
 		Task t = new Task();
 		t.setTitle("Construir aplicacion JSF");
-		t.setDescription("Mejorar consulta");
+		t.setDescription("prueba");
 		tService.save(t, u);
 
 	}
