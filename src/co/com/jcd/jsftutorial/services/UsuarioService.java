@@ -46,4 +46,9 @@ public class UsuarioService implements IUsuarioService {
 		return new LinkedList<>(repo.getAll());
 	}
 
+	@Override
+	public 	List<Usuario> getByNombre(String nombre) {
+		return repo.getByNombre(nombre);
+	}
+
 }

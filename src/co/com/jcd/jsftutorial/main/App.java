@@ -1,5 +1,8 @@
 package co.com.jcd.jsftutorial.main;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import co.com.jcd.jsftutorial.entities.Task;
 import co.com.jcd.jsftutorial.entities.Usuario;
 import co.com.jcd.jsftutorial.services.TaskService;
@@ -12,15 +15,21 @@ public class App {
 		TaskService tService = TaskService.getInstance();
 		
 		Usuario u = new Usuario();
-		u.setFirstName("Margarita");
-		u.setLastName("Robles");
-		u.setUserName("margarita_32");
-		u.setCivilStatus("Soltera");
-		uService.save(u);
+		List<Usuario> u2 = new ArrayList<>();
+		u.setFirstName("Jonny");
+		u.setLastName("Bernal");
+		u.setUserName("jrockb");
+		u.setCivilStatus("Soltero");
+		u2 = uService.getByNombre(u.getUserName());
+		if(u2.isEmpty()) {
+			uService.save(u);
+		} else {
+			u = u2.get(0);
+		}		
 		
 		Task t = new Task();
 		t.setTitle("Construir aplicacion JSF");
-		t.setDescription("Terminal de leer el tutorial");
+		t.setDescription("Mejorar consulta");
 		tService.save(t, u);
 
 	}

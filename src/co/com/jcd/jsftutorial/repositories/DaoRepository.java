@@ -18,7 +18,7 @@ public interface DaoRepository<T> {
 	void save(T obj);
 	void update(T obj);
 	void delete(T obj);
-	Optional<T> getById(Integer id);
+	Optional<T> getById(Integer id);	
 	List<T> getAll();
 
 }

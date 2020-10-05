@@ -76,6 +76,26 @@ public class UsuarioRepository implements DaoRepository<Usuario> {
 		trans.commit();
 		session.close();
 		return Optional.of(usuario);
+	}	
+	
+	public List<Usuario> getByNombre(String nombre) {
+		Session session = FACTORY.openSession();
+		Transaction trans = session.beginTransaction();
+		List<Usuario> usuarios = new LinkedList<>();
+		try {
+			String jpql = "SELECT u FROM Usuario u WHERE u.userName = :nombre";
+			Query<Usuario> query = session.createQuery(jpql, Usuario.class)
+					.setParameter("nombre", nombre); // Paso 1
+			usuarios.addAll(query.getResultList()); // Paso 2
+			LOG.info("Retornando todos los registros de usuarios...");
+		} catch (Exception e) {
+			LOG.error("Error: " + e.getMessage());
+		} finally {
+			trans.commit();
+			session.close();
+		}
+
+		return usuarios; // Paso 3
 	}
 
 	@Override

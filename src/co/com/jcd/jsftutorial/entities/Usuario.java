@@ -38,7 +38,7 @@ public class Usuario implements Serializable {
 	private String verified;
 
 	//bi-directional many-to-one association to Task
-	@OneToMany(mappedBy="usuarioBean")
+	@OneToMany(fetch=FetchType.EAGER, mappedBy="usuarioBean")
 	private List<Task> tasks;
 
 	public Usuario() {
