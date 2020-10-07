@@ -5,22 +5,16 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.enterprise.context.ApplicationScoped;
+
 import co.com.jcd.jsftutorial.entities.Usuario;
 import co.com.jcd.jsftutorial.repositories.UsuarioRepository;
 
+@ApplicationScoped
 public class UsuarioService implements IUsuarioService {
 	
-	private final UsuarioRepository repo = new UsuarioRepository();
-	private static final UsuarioService INSTANCE = new UsuarioService();
+	private final UsuarioRepository repo = new UsuarioRepository();	
 	
-	private UsuarioService() {
-		// el constructor es privado para evitar que los usuarios
-		// creen nuevas instancias
-	}
-
-	public static UsuarioService getInstance() {
-		return INSTANCE;
-	}
 	
 	public void save(Usuario obj) {
 		if (obj != null) {

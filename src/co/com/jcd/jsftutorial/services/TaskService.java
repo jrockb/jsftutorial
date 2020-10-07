@@ -6,25 +6,20 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+
 import co.com.jcd.jsftutorial.entities.Task;
 import co.com.jcd.jsftutorial.entities.Usuario;
 import co.com.jcd.jsftutorial.repositories.TaskRepository;
 
+@ApplicationScoped
 public class TaskService implements ITaskService {
 	
 	private final TaskRepository repo = new TaskRepository();
-	private final UsuarioService uService = UsuarioService.getInstance();
-	private static final TaskService INSTANCE = new TaskService();
-	
-	private TaskService() {
-		// el constructor es privado para evitar que los Tasks
-	    // creen nuevas instancias
-	}
-	
-	public static TaskService getInstance() {
-		return INSTANCE;
-	}
-	
+	@Inject
+	private UsuarioService uService = new UsuarioService();
+		
 	public void save(Task t, Usuario u ) {
 		if (t != null && u != null) {
 			t.setUsuarioBean(u);

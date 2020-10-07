@@ -1,6 +1,6 @@
 package co.com.jcd.jsftutorial.main;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import co.com.jcd.jsftutorial.entities.Task;
@@ -11,14 +11,14 @@ import co.com.jcd.jsftutorial.services.UsuarioService;
 public class App {
 
 	public static void main(String[] args) {
-		UsuarioService uService = UsuarioService.getInstance();
-		TaskService tService = TaskService.getInstance();
+		TaskService tService = new TaskService();
+		UsuarioService uService = new UsuarioService();
 		
 		Usuario u = new Usuario();
 		List<Usuario> u2;
-		u.setFirstName("Jonny");
-		u.setLastName("Bernal");
-		u.setUserName("jrockb");
+		u.setFirstName("Pepito");
+		u.setLastName("Perez");
+		u.setUserName("pperez123");
 		u.setCivilStatus("Soltero");
 		u2 = uService.getByNombre(u.getUserName());
 		if(u2.isEmpty()) {

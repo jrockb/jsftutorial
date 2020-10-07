@@ -25,8 +25,8 @@
 		<br />
 		<br />
 		<h:commandButton id="btnEnviar" value="Crear Usuario" action="#{usuarioController.guardarUsuario()}"/>
-		
-		<h:outputLabel value="Usuarios Registrados" />
+	</h:form>
+	<h:outputLabel value="Usuarios Registrados" />
 		<ui:repeat var="usuario" value="#{usuarioController.uService.getAll()}" varStatus="status">
 			<hr />
 			<h:outputText value="Usuario número #{status.index +1}"></h:outputText>
@@ -39,7 +39,5 @@
 			<br />
 			Fecha de creación: <h:outputText value="#{usuario.createdAt}"></h:outputText>
 		</ui:repeat>
-		
-	</h:form>
 </h:body>
 </html>

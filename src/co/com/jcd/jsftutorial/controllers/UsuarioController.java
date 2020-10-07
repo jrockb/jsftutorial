@@ -3,6 +3,7 @@ package co.com.jcd.jsftutorial.controllers;
 import java.io.Serializable;
 
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.jboss.logging.Logger;
@@ -21,7 +22,8 @@ public class UsuarioController implements Serializable {
 	private static Logger LOG = Logger.getLogger(Usuario.class);
 	
 	private Usuario usuario = new Usuario();
-	private UsuarioService uService = UsuarioService.getInstance();
+	@Inject
+	private UsuarioService uService = new UsuarioService();
 
 	/**
 	 * @return the usuario

@@ -7,6 +7,22 @@
 </head>
 
 <body>
-	<p>#{taskController.mensaje}</p>
+	<ul>
+		<li><h:link value = "Usuarios" outcome = "usuarios"/></li>
+		<li><h:link value = "Tareas" outcome = "tareas"/></li>
+	</ul>
+	
+	<h:outputLabel value="Ingresa una nueva tarea" />
+	<br />
+	<h:form>
+		Titulo: <h:inputText id="itTitulo" value="#{taskController.tarea.title}" />
+		<br />
+		Nombre de usuario: <h:inputText id="itUsuario" value="#{taskController.usuario}" />
+		<br />
+		Descripción: <h:inputTextarea id="itApellido" value="#{taskController.tarea.description}" />		
+		<br />
+		<br />
+		<h:commandButton id="btnEnviar" value="	Crear Tarea" action="#{taskController.guardarTarea()}"  />
+	</h:form>	
 </body>
 </html>
