@@ -1,6 +1,7 @@
 package co.com.jcd.jsftutorial.main;
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -99,14 +100,19 @@ public class App {
 	}
 
 	public static void main(String[] args) {
-//		TaskService tService = new TaskService();
-//		UsuarioService uService = new UsuarioService();
-//		
+		TaskService tService = new TaskService();
+		UsuarioService uService = new UsuarioService();
+		List<Task> tareas = new ArrayList<>();
+		tareas = tService.getAll();
+		for(Task tarea : tareas) {
+			System.out.println(tarea.getTitle());
+		}
+		
 //		Usuario u = new Usuario();
 //		List<Usuario> u2;
-//		u.setFirstName("Pepito");
+//		u.setFirstName("preuab");
 //		u.setLastName("Perez");
-//		u.setUserName("pperez123");
+//		u.setUserName("ppersdez123");
 //		u.setCivilStatus("Soltero");
 //		u2 = uService.getByNombre(u.getUserName());
 //		if(u2.isEmpty()) {
@@ -119,9 +125,9 @@ public class App {
 //		t.setTitle("Construir aplicacion JSF");
 //		t.setDescription("prueba");
 //		tService.save(t, u);
-		List<String> conceptos= Arrays.asList("concepto1", "concepto2","concepto3","concepto4");
-		String nitPagaduria= "45646548476546";
-		enviarCorreo(conceptos, nitPagaduria);
+//		List<String> conceptos= Arrays.asList("concepto1", "concepto2","concepto3","concepto4");
+//		String nitPagaduria= "45646548476546";
+//		enviarCorreo(conceptos, nitPagaduria);
 		
 
 	      

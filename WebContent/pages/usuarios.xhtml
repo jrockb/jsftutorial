@@ -38,18 +38,21 @@
 			<br />
 			<br />	
 			<h:outputLabel value="Usuarios Registrados" />
-			<ui:repeat var="usuario" value="#{usuarioController.uService.getAll()}" varStatus="status">
-				<hr />
-				<h:outputText value="Usuario número #{status.index +1}"></h:outputText>
-				<br />
-				Nombre: <h:outputText value="#{usuario.firstName}"></h:outputText>
-				<br />
-				Apellido: <h:outputText value="#{usuario.lastName}"></h:outputText>
-				<br />
-				Nombre de usuario: <h:outputText value="#{usuario.userName}"></h:outputText>
-				<br />
-				Fecha de creación: <h:outputText value="#{usuario.createdAt}"></h:outputText>
-			</ui:repeat>	
+			<b:dataTable var="usuario" value="#{usuarioController.uService.getAll()}" 
+				paginated="false">
+				<f:facet name="header">
+					<tr>
+						<th>Nombre</th>
+						<th>Apellidos</th>
+						<th>Nombre de Usuario</th>
+						<th>Fecha de Creación</th>						
+					</tr>
+				</f:facet>
+				<b:dataTableColumn value="#{usuario.firstName}" />
+				<b:dataTableColumn value="#{usuario.lastName}" />
+				<b:dataTableColumn value="#{usuario.userName}" />
+				<b:dataTableColumn value="#{usuario.createdAt}" />
+			</b:dataTable>	
 		</ui:define>
 	</ui:composition>
 </html>

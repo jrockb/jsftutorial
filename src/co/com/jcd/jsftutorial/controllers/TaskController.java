@@ -53,7 +53,25 @@ public class TaskController implements Serializable{
 
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
+	}
+
+	public TaskService gettService() {
+		return tService;
+	}
+
+	public void settService(TaskService tService) {
+		this.tService = tService;
+	}
+
+	public UsuarioService getuService() {
+		return uService;
+	}
+
+	public void setuService(UsuarioService uService) {
+		this.uService = uService;
 	}	
+	
+	
 	
 
 }

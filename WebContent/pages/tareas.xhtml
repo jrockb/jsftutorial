@@ -9,18 +9,44 @@
 	<ui:define name="pageTitle">Usuarios</ui:define>
 	<ui:define name="pageContent">
 	
-	<h:outputLabel value="Ingresa una nueva tarea" />
-	<br />
-	<h:form>
-		Titulo: <h:inputText id="itTitulo" value="#{taskController.tarea.title}" />
+	<b:button value="Crear Nueva Tarea" look="warning"
+			onclick="$('.modalPseudoClass').modal()" />
+		<b:modal id="mdTarea" title="Crear Tarea"
+			styleClass="modalPseudoClass">
+			<b:form>
+				<b:inputText id="itTitulo" label="Titulo" labelStyle="width:80px;"
+					value="#{taskController.tarea.title}" />
+				<b:inputText id="itApellido" label="Usuario"
+					labelStyle="width:80px;" value="#{taskController.usuario}" />
+				<b:inputTextarea id="itDescripcion" label="Descripcion"
+					value="#{taskController.tarea.description}" />
+				<b:commandButton value="Crear" look="primary" dismiss="modal"
+					action="#{taskController.guardarTarea()}"
+					style="margin-left: auto; margin-top: 10px;" />
+			</b:form>
+			<f:facet name="footer">
+				<b:button value="Cancelar" dismiss="modal" />
+			</f:facet>
+		</b:modal>
 		<br />
-		Nombre de usuario: <h:inputText id="itUsuario" value="#{taskController.usuario}" />
 		<br />
-		Descripción: <h:inputTextarea id="itApellido" value="#{taskController.tarea.description}" />		
+		<h:outputLabel value="Tareas Guardadas" />
 		<br />
 		<br />
-		<h:commandButton id="btnEnviar" value="	Crear Tarea" action="#{taskController.guardarTarea()}"  />
-	</h:form>	
+		<ui:repeat value="#{taskController.tService.getAll()}" var="tarea">
+			<b:panel>
+				<f:facet name="heading">
+					<h:outputText value="#{tarea.title}" />
+				</f:facet>
+				<h:outputText value="#{tarea.description}" rendered="#{tarea.description != null}" />
+				<h:outputText value="No hay descripción disponible" rendered="#{tarea.description == null}" />
+				<br />
+				<br />
+				<b>Dueño: </b><h:outputText value="#{tarea.usuarioBean.userName}" />
+				<br />
+				<b>Fecha Limite: </b><h:outputText value="#{tarea.deadLine}" />
+			</b:panel>
+		</ui:repeat>
 	</ui:define>
 </ui:composition>
 </html>

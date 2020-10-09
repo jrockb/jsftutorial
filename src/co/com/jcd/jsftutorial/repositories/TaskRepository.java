@@ -83,7 +83,7 @@ public class TaskRepository implements DaoRepository<Task> {
 		Transaction trans = session.beginTransaction();
 		List<Task> tasks = new LinkedList<>();
 		try {
-			String jpql = "SELECT u FROM tasks u";
+			String jpql = "SELECT u FROM Task u";
 			Query<Task> query = session.createQuery(jpql, Task.class); // Paso 1
 			tasks.addAll(query.getResultList()); // Paso 2
 			LOG.info("Retornando todos los registros de tareas");
